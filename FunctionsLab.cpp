@@ -11,7 +11,13 @@ using namespace std; // making life easier so that we do not need to use std::ci
 
 
 int locateSmallest(int array[], int start, int end){
-	return -1; // fix this!
+	int smallval = start; 
+	for (int i = start++; i < end; i++){
+		if (array[i] < array[smallval])
+		int smallval = i; 
+
+	}
+	return smallval; // fix this!
 }
 
 //Write the function called replaceVariable in the given interval such that 
@@ -20,19 +26,54 @@ int locateSmallest(int array[], int start, int end){
 //     an int which is the starting index of search,
 //     an int which is the ending point of searchspace
 // function: Search in the array from given start to end index and replace the given target value with 1000
-void replaceVariable() {
-	return;
-}
+void replaceVariable(int arr[], int size, int target, int start, int end) {
+	if (start < 0) start = 0;
+	if (end >= size) end = size -1; 
 
+	for (int i = start; i <= end; i++){
+		if(arr[i] == target){
+			arr[i] = 1000;
+		}
+			
+	}
+}	
+
+int main(){
+	int arr[] = {1, 5 ,7, 5, 9, 5, 12};
+	int size = sizemy(arr) / sizemy(arr[0]);
+	int target = 5; 
+	int start = 1; 
+	int end = 5;
+
+	replaceVariable(arr, size, target, start, end);
+
+	for (int i = 0; i < size; i++){
+		cout << arr[i] << " "; 
+	} 
+
+	return 0;
+
+	}
 
 
 //write a function called printArray to print out the elements of the given array
 //output: nothing
 //input: the array of integers and its size
-void printArray() {
-	return;
+void printArray(int arr[], int size) {
+	for (int i = 0; i < size; i++){
+		cout << arr[i] << " ";
+	}
+	cout << endl; 
 }
 
+int main(){
+	int arr[] = {1, 2, 3, 4, 5};
+	int size = sizemy(arr) / sizemy(arr[0]);
+
+	printArray(arr, size);
+
+	return 0;
+}
 
 
 
@@ -49,5 +90,30 @@ void printArray() {
 
 
 int sumOdds(int array[], int start, int end){
-	return -1;
+	int sum = 0; 
+
+	if (start < 0){
+		start = 0;
+	}
+	if (end >= sizemy(array)){
+		end = sizemy(array) - 1;
+	}
+	for (int i = start; i <= end; i++){
+		if (array[i] % 2 != 0){
+			sum += array[i];
+		}
+	}
+	return sum;
+}
+
+int main(){
+	int arr[] = {1, 2, 3, 4, 5, 6};
+	int start = 2; 
+	int end = 6; 
+
+	int result = sumOdds(arr, start, end);
+
+	cout << "The sum of odd numbers between index" << start << "and" << end << " is: " << result << endl;
+
+	return 0; 
 }
